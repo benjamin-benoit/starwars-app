@@ -3,7 +3,7 @@ import swapiService from '../../api/swapi';
 import { People } from '../../api/types';
 
 interface PeopleState {
-  data: People[] | null;
+  data: People | null;
   loading: string;
   error: string;
 }
@@ -14,10 +14,8 @@ const initialState: PeopleState = {
   error: '',
 };
 
-export const fetchPeople = createAsyncThunk('fetchPeople', async () => {
-  const data = swapiService.getPeople();
-
-  return (await data).results;
+export const fetchPeople = createAsyncThunk('fetchPeople', async (page: string) => {
+  return swapiService.getPeople(page);
 });
 
 const peopleSlice = createSlice({

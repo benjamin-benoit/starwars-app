@@ -5,7 +5,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 const store = configureStore({
   reducer: {
     people: peopleSlice,
-  }
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

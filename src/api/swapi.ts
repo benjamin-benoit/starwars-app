@@ -5,8 +5,8 @@ const instance = axios.create({
   baseURL: 'https://swapi.dev/api',
 });
 
-const getPeople = () => {
-  return instance.get<{ results: People[]}>('/people').then(res => res.data);
+const getPeople = (page: string) => {
+  return instance.get<People>(`/people/${page}`).then(res => res.data);
 };
 
 const swapiService = {
